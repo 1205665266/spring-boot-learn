@@ -1,0 +1,11 @@
+CREATE TABLE UserData (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    nickName VARCHAR(255),
+    phone VARCHAR(20),
+    age INT,
+    createDate TIMESTAMP,
+    updateDate TIMESTAMP
+);

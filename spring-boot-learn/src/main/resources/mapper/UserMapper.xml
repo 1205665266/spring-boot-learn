@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.spring.boot.learn.mapper.UserMapper">
+<!--
+    可以先定义resultMap id="UserDataVo"
+    返回的时候resultMap="UserDataVo"
+    -->
+    <!--    <resultMap id="UserDataVo" type="com.example.spring.boot.learn.bean.vo.UserDataVo">-->
+    <!--        <result property="id" column="id"/>-->
+    <!--        <result property="name" column="name"/>-->
+    <!--        <result property="email" column="email"/>-->
+    <!--        <result property="age" column="age"/>-->
+    <!--        <result property="avatar" column="avatar"/>-->
+    <!--    </resultMap>-->
+    <!--    <select id="getUserByIdTest" parameterType="java.lang.String" resultMap="UserDataVo">-->
+    <!--        SELECT *-->
+    <!--        FROM user-->
+    <!--        WHERE id = #{id}-->
+    <!--    </select>-->
+
+
+    <!--    常用 -->
+    <sql id="commonSql">
+        SELECT id, username, password, name, age, email, avatar
+        FROM user
+    </sql>
+    <select id="getUserById" parameterType="java.lang.String" resultType="com.example.spring.boot.learn.bean.vo.UserDataVo">
+<!--        <include refid="commonSql"/>-->
+        SELECT id, name, age, email, avatar
+        FROM user
+        WHERE id = #{id}
+    </select>
+
+
+    <update id="updateUserById" parameterType="com.example.spring.boot.learn.bean.entity.User">
+        UPDATE user
+        SET name = #{name}
+        WHERE id = #{id}
+    </update>
+
+
+</mapper>
+
